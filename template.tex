@@ -117,7 +117,7 @@
 
 
 %----------------------------------------------------------------------------------------
-%	POSTER HEADER 
+%   POSTER HEADER 
 %----------------------------------------------------------------------------------------
 %\title{Creating a \LaTeX{} poster template matching UZH specifications for LiRI presentations}
 \title{Intern Program Presention}
@@ -145,7 +145,7 @@
 \vspace{0.2cm}
 \large \textbf{Education Background}:\\
 \large
-* Bachelor of Computing (Information Security) (Top5\%) 	 - NUS
+* Bachelor of Computing (Information Security) (Top5\%)      - NUS
 %\\ % add your institution
 %\texttt{you@uzh.ch}%\\ % add your email
 \end{minipage}%
@@ -159,13 +159,13 @@
 \vspace{0cm}
 
 %----------------------------------------------------------------------------------------
-%	POSTER BODY
+%   POSTER BODY
 %----------------------------------------------------------------------------------------
 
 \begin{multicols}{2} % This is how many columns your poster will be broken into
 
 %----------------------------------------------------------------------------------------
-%	INTRODUCTION
+%   INTRODUCTION
 %----------------------------------------------------------------------------------------
 
 \section{Smart Contract Security Team}
@@ -191,7 +191,7 @@
 .2 SaaS Abnormal Events Monitoring and Alert:.
 .3 Internal Subscription.
 .3 External Subscription through AvengerDAO.
-.2 Risk Score Assessment API:.
+.2 thread Score Assessment API:.
 .3 Internal caller.
 .3 External caller.
 .2 Security publicity to Clients
@@ -201,7 +201,7 @@
 }
 
 %----------------------------------------------------------------------------------------
-%	SECTIONS
+%   SECTIONS
 %----------------------------------------------------------------------------------------
 
 \section{Monitors}
@@ -228,27 +228,28 @@
     \node [cloud, right of=init, node distance=10cm] (bscscan) {bscscan};
     \node [block, below of=init] (identify) {models to identify candidate sensitive functions};
     \node [block, below of=identify] (evaluate) {human audit candidate models};
-    \node [block, left of=evaluate, node distance=10cm] (update) {update model};
+    \node [left of=evaluate, node distance=10cm] (update) {6. update model};
     \node [decision, below of=evaluate, node distance=10cm] (decide) {is the candidate function accurate?};
      \node [cloud, right of=identify, node distance=10cm] (web3API) {web3API};
-    \node [block, right of=evaluate, node distance=10cm] (riskModel) {riskModel};
-    \node [cloud, right of=riskModel, node distance=10cm] (client2) {client};
+    \node [block, right of=evaluate, node distance=10cm] (threadModel) {threadModel};
+    \node [cloud, right of=threadModel, node distance=10cm] (client2) {client};
     \node [block, right of=decide, node distance=10cm] (sensitiveFunctionDatabase) {sensitive function database};
     % Draw edges
-    \path [line] (init) -- (identify);
-    \path [line] (identify) -- (evaluate);
+    \draw [->, line width=4pt] (client1) -- (init) node [midway,above] {1.projects}; 
+    \draw [->,line,dashed, line width=4pt]  (init)--(bscscan)node [midway,above] {2};
+    \draw [->, line width=4pt] (init) -- (identify) node [midway,right] {3};
+    \draw [->, line width=4pt] (identify) -- (evaluate)node [midway,right] {4};
     \path [line] (evaluate) -- (decide);
-    \path [line] (decide) -| node [near start] {} (update);
-    \path [line] (update) |- (identify);
-     \draw[arrows=->] (client1) --(init)node[midway,above] {projects};
-    \path [line,dashed] (bscscan) -- (init);
-    \path [line] (decide) -- (sensitiveFunctionDatabase);
-    \path [line,dashed] (web3API) -- (riskModel);
-    \path [line,dashed] (sensitiveFunctionDatabase) -- (riskModel);
-    \draw[arrows=->] (riskModel) --(client2)node[midway,above] {alarm};
+    \draw [  line width=4pt] (decide) -| node [near start] {} (update);
+    \draw [->, line width=4pt] (update) |- (identify);
+    
+    \draw [->, line width=4pt] (decide) -- (sensitiveFunctionDatabase)node [midway,above] {6};
+    \draw [->, dashed, line width=4pt] (threadModel) -- (web3API)node [midway,right] {a};
+    \draw [->, dashed, line width=4pt] (threadModel) -- (sensitiveFunctionDatabase)node [midway,right] {b};
+    \draw[->, line width=4pt] (threadModel) --(client2)node[midway,above] {alarm};
 \end{tikzpicture}
 %----------------------------------------------------------------------------------------
-%	CONCLUSIONS BOX
+%   CONCLUSIONS BOX
 %----------------------------------------------------------------------------------------
 
 %\section*{} % this dummy section draws a horizontal line above conclusions
@@ -268,7 +269,7 @@
 \end{tcolorbox}    
 
 %----------------------------------------------------------------------------------------
-%	FORTHCOMING RESEARCH
+%   FORTHCOMING RESEARCH
 %----------------------------------------------------------------------------------------
 
 
